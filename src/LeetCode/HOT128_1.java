@@ -2,7 +2,6 @@ package LeetCode;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class HOT128_1 {
@@ -34,25 +33,27 @@ public class HOT128_1 {
      * -109 <= nums[i] <= 109
      */
     public static int longestConsecutive(int[] nums) {
-        if (nums.length == 0 || nums.length == 1) return nums.length;
-        Arrays.sort(nums);
         Set<Integer> numSet = new HashSet<>();
         Arrays.stream(nums).forEach(numSet::add);
         int count = 1;
-        int max = 1;
+        int max = 0;
         for (int num : numSet) {
-            if (numSet.contains(num + 1)) count++;
-            else {
-                max = Math.max(max, count);
-                if (numSet.size() - max <= max) break;
-                count = 1;
+            if (numSet.contains(num - 1)) {
+                continue;
             }
+            while (numSet.contains(num + 1)) {
+                count++;
+                num++;
+            }
+            max = Math.max(count, max);
+            count = 1;
+            if (numSet.size() - max <= max) break;
         }
         return max;
     }
 
     public static void main(String[] args) {
-        int[] nums = {9,1,4,7,3,-1,0,5,8,-1,6};
+        int[] nums = {0,-1};
         System.out.println(longestConsecutive(nums));
     }
 }
