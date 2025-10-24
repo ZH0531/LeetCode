@@ -1,8 +1,8 @@
-package LeetCode;
+package LeetCode.HOT100;
 
 import java.util.*;
 
-public class HOT49 {
+public class No49 {
     /**
      * 给你一个字符串数组，请你将 字母异位词 组合在一起。可以按任意顺序返回结果列表。
      *

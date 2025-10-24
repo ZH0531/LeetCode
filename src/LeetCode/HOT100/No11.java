@@ -1,6 +1,6 @@
-package LeetCode;
+package LeetCode.HOT100;
 
-public class HOT11 {
+public class No11 {
     /**
      * 给定一个长度为 的整数数组 。 有 条垂线，第 条线的两个端点是 和 。nheightni(i, 0)(i, height[i])
      * <p>
