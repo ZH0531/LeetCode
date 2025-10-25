@@ -1,8 +1,8 @@
-package LeetCodeHOT100;
+package LeetCode.HOT100;
 
 import java.util.*;
 
-public class No15 {
+public class Problem15 {
     /**
      * 三数之和
      * 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请你返回所有和为 0 且不重复的三元组。
@@ -69,10 +69,5 @@ public class No15 {
 
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-        No15 no15 = new No15();
-        System.out.println(no15.threeSum(new int[]{-1,0,1,2,-1,-4}));
     }
 }

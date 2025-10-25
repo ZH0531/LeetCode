@@ -1,9 +1,9 @@
-package LeetCodeHOT100;
+package LeetCode.HOT100;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class No3 {
+public class Problem3 {
     /**
      * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长 子串 的长度。
      * <p>
@@ -51,8 +51,4 @@ public class No3 {
         return max;
     }
 
-    public static void main(String[] args) {
-        No3 no3 = new No3();
-        System.out.println(no3.lengthOfLongestSubstring("abcabcbb"));
-    }
 }

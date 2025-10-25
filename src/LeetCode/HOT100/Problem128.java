@@ -1,10 +1,10 @@
-package LeetCodeHOT100;
+package LeetCode.HOT100;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class No128 {
+public class Problem128 {
     /**
      * 最长连续序列
      * 给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
@@ -33,7 +33,7 @@ public class No128 {
      * 0 <= nums.length <= 105
      * -109 <= nums[i] <= 109
      */
-    public static int longestConsecutive(int[] nums) {
+    public  int longestConsecutive(int[] nums) {
         if (nums.length == 0 || nums.length == 1) return nums.length;
         Arrays.sort(nums);
         Set<Integer> numSet = new LinkedHashSet<>();
@@ -51,8 +51,4 @@ public class No128 {
         return max;
     }
 
-    public static void main(String[] args) {
-        int[] nums = {9,1,4,7,3,-1,0,5,8,-1,6};
-        System.out.println(longestConsecutive(nums));
-    }
 }

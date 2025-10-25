@@ -1,6 +1,6 @@
-package LeetCodeHOT100;
+package LeetCode.HOT100;
 
-public class No42 {
+public class Problem42 {
     /**
      * 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
      * <p>
@@ -41,8 +41,4 @@ public class No42 {
         return result;
     }
 
-    public static void main(String[] args) {
-        No42 no42 = new No42();
-        System.out.println(no42.trap(new int[]{2,0,2}));
-    }
 }

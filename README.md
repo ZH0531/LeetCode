@@ -1,1 +1,1 @@
-# LeetCode HOT 100 Java 每日更新
+# LeetCode Java解法 每日更新

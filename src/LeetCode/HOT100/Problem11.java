@@ -1,6 +1,6 @@
-package LeetCodeHOT100;
+package LeetCode.HOT100;
 
-public class No11 {
+public class Problem11 {
     /**
      * 盛最多水的容器
      *

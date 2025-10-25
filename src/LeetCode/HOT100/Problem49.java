@@ -1,8 +1,8 @@
-package LeetCodeHOT100;
+package LeetCode.HOT100;
 
 import java.util.*;
 
-public class No49 {
+public class Problem49 {
     /**
      * 字母异位词分组
      *
