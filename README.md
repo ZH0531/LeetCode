@@ -46,17 +46,17 @@ public int[] twoSum(int[] nums, int target){
 
 **题解：**
 
-```
-   public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> numMap = new HashMap<>(); // 哈希表
-        for (int i = 0; i < nums.length; i++) { // 遍历数组（只需最多一轮）
-            if (numMap.containsKey(target - nums[i])) { // 若存在另一位数字
-                return new int[]{numMap.get(target - nums[i]), i}; // 构建数组并返回结果
-            }
-            numMap.put(nums[i], i); // 若不存在，则将当前数字和下标存入哈希表，以便下次查找
+```java
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> numMap = new HashMap<>(); // 哈希表
+    for (int i = 0; i < nums.length; i++) { // 遍历数组（只需最多一轮）
+        if (numMap.containsKey(target - nums[i])) { // 若存在另一位数字
+            return new int[]{numMap.get(target - nums[i]), i}; // 构建数组并返回结果
         }
-        return null;
+        numMap.put(nums[i], i); // 若不存在，则将当前数字和下标存入哈希表，以便下次查找
     }
+    return null;
+}
 ```
 
 **解题思路：**
@@ -98,18 +98,18 @@ public int[] twoSum(int[] nums, int target){
 ```
 
 **题解：**
-```
-   public List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>(); // 依然是哈希表
-        for (String str : strs) { //遍历数组
-            char[] chars = str.toCharArray(); // 将遍历到的字符串转换为字符数组
-            Arrays.sort(chars); //对字符数组进行排序
-            String key = new String(chars); // 将排序后的字符数组转换为字符串作为 key
-            map.putIfAbsent(key, new ArrayList<>()); // 如果 key 不存在，则创建一个空的 ArrayList
-            map.get(key).add(str); // 将当前字符串添加到对应的 key 的 ArrayList 中
-        }
-        return map.values().stream().toList(); // 将 map 的值转换为 List返回
+```java
+public List<List<String>> groupAnagrams(String[] strs) {
+    Map<String, List<String>> map = new HashMap<>(); // 依然是哈希表
+    for (String str : strs) { // 遍历数组
+        char[] chars = str.toCharArray(); // 将遍历到的字符串转换为字符数组
+        Arrays.sort(chars); // 对字符数组进行排序
+        String key = new String(chars); // 将排序后的字符数组转换为字符串作为 key
+        map.putIfAbsent(key, new ArrayList<>()); // 如果 key 不存在，则创建一个空的 ArrayList
+        map.get(key).add(str); // 将当前字符串添加到对应的 key 的 ArrayList 中
     }
+    return map.values().stream().toList(); // 将 map 的值转换为 List返回
+}
 ```
 
 **解题思路：**
@@ -126,7 +126,10 @@ public int[] twoSum(int[] nums, int target){
 📌 **关于字符排序：** Unicode 字符集的每个字符都有唯一的编码，因此我们可以将字符串中的字符进行排序。所有异位词排序后会得到相同的字符串，比如 "eat"、"tea"、"ate" 排序后都是 "aet"，这样就可以作为同一个 key 进行分组。
 
 将排序过后的字符转换成字符串作为`key`的时候，我们需要将原字符串存入一个数组，也就是该`key`的`value`，以方便后续返回。
-本题仍然只需要遍历一次，效率非常之高
+
+虽然需要对每个字符串进行排序，但整体效率仍然很高，时间复杂度为 `O(n × k log k)`
+
+>本题应该是还有其他更高效的解法的，但是我这种解法效率也还行，代码比较简洁易懂
 
 **复杂度分析：**
 
@@ -158,27 +161,27 @@ public int[] twoSum(int[] nums, int target){
 输出：3
 ```
 
-**解题思路（方法一 - 排序）：** 
+**解题思路（方法一  排序）：** （不推荐）
 
-**题解（不推荐）：**
-```
-    public  int longestConsecutive(int[] nums) {
-        if (nums.length == 0 || nums.length == 1) return nums.length; // 判断数组长度，0 或 1 直接返回
-        Arrays.sort(nums); // 排序，让无序变成有序，这样数字就连续了...
-        Set<Integer> numSet = new LinkedHashSet<>(); // 使用 LinkedHashSet 保持顺序和高效查询以及去重
-        Arrays.stream(nums).forEach(numSet::add); // 将数组元素添加到 Set 中
-        int count = 1; // 用于记录当前连续序列的长度
-        int max = 1; // 用于记录最长连续序列的长度
-        for (int num : numSet) {
-            if (numSet.contains(num + 1)) count++; // 如果存在下一个数字，则长度加 1
-            else {
-                max = Math.max(max, count); // 如果中断，更新最长连续序列长度
-                if (numSet.size() - max <= max) break; // 如果剩余元素不足以超过当前最大值，提前结束
-                count = 1; // 重置当前长度
-            }
+**题解：**
+```java
+public int longestConsecutive(int[] nums) {
+    if (nums.length == 0 || nums.length == 1) return nums.length; // 判断数组长度，0 或 1 直接返回
+    Arrays.sort(nums); // 排序，让无序变成有序，这样数字就连续了...
+    Set<Integer> numSet = new LinkedHashSet<>(); // 使用 LinkedHashSet 保持顺序和高效查询以及去重
+    Arrays.stream(nums).forEach(numSet::add); // 将数组元素添加到 Set 中
+    int count = 1; // 用于记录当前连续序列的长度
+    int max = 1; // 用于记录最长连续序列的长度
+    for (int num : numSet) {
+        if (numSet.contains(num + 1)) count++; // 如果存在下一个数字，则长度加 1
+        else {
+            max = Math.max(max, count); // 如果中断，更新最长连续序列长度
+            if (numSet.size() - max <= max) break; // 如果剩余元素不足以超过当前最大值，提前结束
+            count = 1; // 重置当前长度
         }
-        return max;
-    }    
+    }
+    return max;
+}
 ```
 
 - 先对数组排序，使用 LinkedHashSet 去重并保持顺序
@@ -196,27 +199,27 @@ public int[] twoSum(int[] nums, int target){
 
 **解题思路（方法二 - 哈希优化）：** ⭐ 推荐
 
-**题解（推荐）：**
+**题解：**
 
-```
-  public int longestConsecutive(int[] nums) {
-        Set<Integer> numSet = new HashSet<>(); // 使用 HashSet 存储所有数字
-        Arrays.stream(nums).forEach(numSet::add); // 将数组元素添加到 Set 中
-        int count = 1; // 用于记录当前连续序列的长度
-        int max = 0; // 用于记录最长连续序列的长度
-        for (int num : numSet) {
-            if (numSet.contains(num - 1)) continue; 
-            // 上一句的意思是，找到连续数字的起点，如果不存在上一个数则代表该数是起点，才执行下面的代码，反之则跳过
-            while (numSet.contains(num + 1)) { // 匹配下一个数字
-                count++; // 统计长度
-                num++; // 更新数字，下一轮匹配下下...个数字，一直循环，直到不满足循环条件退出
-            }
-            max = Math.max(count, max); // 当执行到这里，代表该数字是连续数字的终点，更新最长连续序列长度
-            count = 1; // 重置当前长度，继续匹配下一个数字
-            if (numSet.size() - max <= max) break; // 如果剩余元素不足以超过当前最大值，提前结束
+```java
+public int longestConsecutive(int[] nums) {
+    Set<Integer> numSet = new HashSet<>(); // 使用 HashSet 存储所有数字
+    Arrays.stream(nums).forEach(numSet::add); // 将数组元素添加到 Set 中
+    int count = 1; // 用于记录当前连续序列的长度
+    int max = 0; // 用于记录最长连续序列的长度
+    for (int num : numSet) {
+        if (numSet.contains(num - 1)) continue; 
+        // 上一句的意思是，找到连续数字的起点，如果不存在上一个数则代表该数是起点，才执行下面的代码，反之则跳过
+        while (numSet.contains(num + 1)) { // 匹配下一个数字
+            count++; // 统计长度
+            num++; // 更新数字，下一轮匹配下下...个数字，一直循环，直到不满足循环条件退出
         }
-        return max;
+        max = Math.max(count, max); // 当执行到这里，代表该数字是连续数字的终点，更新最长连续序列长度
+        count = 1; // 重置当前长度，继续匹配下一个数字
+        if (numSet.size() - max <= max) break; // 如果剩余元素不足以超过当前最大值，提前结束
     }
+    return max;
+}
 ```
 
 - 使用 HashSet 存储所有数字，O(1) 查找
