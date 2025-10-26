@@ -23,7 +23,7 @@
 >25年5月第一次做的时候，用的是硬破解（如下），虽然时间复杂度很高也很低效，但是觉得还是挺有意思的，做出来很有成就感，可惜第二题就做不出来了，也看不懂题目...
 
 **当时的代码**
-```
+```java
 public int[] twoSum(int[] nums, int target){
     int[] result = new int[2]; // 返回数组，用来存下标的
 
@@ -201,25 +201,25 @@ public int longestConsecutive(int[] nums) {
 
 **题解：**
 
-```java
-public int longestConsecutive(int[] nums) {
-    Set<Integer> numSet = new HashSet<>(); // 使用 HashSet 存储所有数字
-    Arrays.stream(nums).forEach(numSet::add); // 将数组元素添加到 Set 中
-    int count = 1; // 用于记录当前连续序列的长度
-    int max = 0; // 用于记录最长连续序列的长度
-    for (int num : numSet) {
-        if (numSet.contains(num - 1)) continue; 
-        // 上一句的意思是，找到连续数字的起点，如果不存在上一个数则代表该数是起点，才执行下面的代码，反之则跳过
-        while (numSet.contains(num + 1)) { // 匹配下一个数字
-            count++; // 统计长度
-            num++; // 更新数字，下一轮匹配下下...个数字，一直循环，直到不满足循环条件退出
+```
+  public int longestConsecutive(int[] nums) {
+        Set<Integer> numSet = new HashSet<>(); // 使用 HashSet 存储所有数字
+        Arrays.stream(nums).forEach(numSet::add); // 将数组元素添加到 Set 中
+        int count = 1; // 用于记录当前连续序列的长度
+        int max = 0; // 用于记录最长连续序列的长度
+        for (int num : numSet) {
+            if (numSet.contains(num - 1)) continue; 
+            // 上一句的意思是，找到连续数字的起点，如果不存在上一个数则代表该数是起点，才执行下面的代码，反之则跳过
+            while (numSet.contains(num + 1)) { // 匹配下一个数字
+                count++; // 统计长度
+                num++; // 更新数字，下一轮匹配下下...个数字，一直循环，直到不满足循环条件退出
+            }
+            max = Math.max(count, max); // 当执行到这里，代表该数字是连续数字的终点，更新最长连续序列长度
+            count = 1; // 重置当前长度，继续匹配下一个数字
+            if (numSet.size() - max <= max) break; // 如果剩余元素不足以超过当前最大值，提前结束
         }
-        max = Math.max(count, max); // 当执行到这里，代表该数字是连续数字的终点，更新最长连续序列长度
-        count = 1; // 重置当前长度，继续匹配下一个数字
-        if (numSet.size() - max <= max) break; // 如果剩余元素不足以超过当前最大值，提前结束
+        return max;
     }
-    return max;
-}
 ```
 
 - 使用 HashSet 存储所有数字，O(1) 查找
@@ -229,16 +229,16 @@ public int longestConsecutive(int[] nums) {
 
 **复杂度分析：**
 
-- 时间复杂度：O(n)，满足题目要求
+- 时间复杂度：O(n)，只需要遍历一次
 - 空间复杂度：O(n)
 
 **核心技巧：** 使用哈希集合快速判断元素存在性，找到序列起点避免重复计算
 
->不得不说，想出这种解法的人是真的NBBBBBBB！看到这种解法我有种豁然开朗的感觉，还是想说NB！
+>不得不说，想出这种解法的人是真的天才才才才才！看到这种解法我有种豁然开朗的感觉，还是想说NB！
 ><br>这种解法的关键在于，通过`num-1`来检测当前遍历到的数字是不是连续数字的起点，如果不是就不要浪费时间，直接下一个！
 ><br>当遍历到的数字在集合里找不到`num-1`，则说明当前数字是连续数字的起点，才开始统计长度
 ><br>我在最后还是加上了截断优化，如果剩余元素不足以超过当前最大值，提前结束，避免无用功
-><br>另外想说的是，所有与优化查询时间有关的，都可以用哈希表，时间复杂度为 `O(1)`，发明哈希表的也是个天才！
+><br>另外想说的是，所有与优化查询时间有关的，都可以用哈希表，查找时间复杂度为 `O(1)`，发明哈希表的也是个天才！
 
 ---
 
