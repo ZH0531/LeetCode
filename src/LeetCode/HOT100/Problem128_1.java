@@ -33,15 +33,13 @@ public class Problem128_1 {
      * 0 <= nums.length <= 105
      * -109 <= nums[i] <= 109
      */
-    public  int longestConsecutive(int[] nums) {
+    public int longestConsecutive(int[] nums) {
         Set<Integer> numSet = new HashSet<>();
         Arrays.stream(nums).forEach(numSet::add);
         int count = 1;
         int max = 0;
         for (int num : numSet) {
-            if (numSet.contains(num - 1)) {
-                continue;
-            }
+            if (numSet.contains(num - 1)) continue;
             while (numSet.contains(num + 1)) {
                 count++;
                 num++;
