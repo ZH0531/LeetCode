@@ -205,13 +205,13 @@ public int longestConsecutive(int[] nums) {
 - 空间复杂度：O(n)
 
 > 好吧，这是我第一次做的时候的所使用的方法，用了这么一种有效但是很低效的方法，低效是因为在循环的时候遍历的整个数组，对每位数字都去计算由他开头的连续数字长度
-> <br>看了一下题解，不得不佩服天才的脑洞是真的大...把时间复杂度优化到极致，也就是以下做法 ↓
+> <br>看了一下官方题解，不得不佩服天才的脑洞是真的大...把时间复杂度优化到极致，也就是以下做法 ↓
 
 **解题思路（方法二 - 哈希优化）：** ⭐ 推荐
 
 **题解：**
 
-```
+```java
   public int longestConsecutive(int[] nums) {
         Set<Integer> numSet = new HashSet<>(); // 使用 HashSet 存储所有数字
         Arrays.stream(nums).forEach(numSet::add); // 将数组元素添加到 Set 中
