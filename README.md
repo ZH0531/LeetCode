@@ -38,8 +38,8 @@ public int[] twoSum(int[] nums, int target){
     return result;
 }
 ```
->**25年10月，学成 Java Web 归来并且做过[单体项目](https://github.com/ZH0531/Z-Chat-Public)但是投简历仍然石沉大海的我决定刷刷算法充实一下自己...
-><br>重新打开了 LeetCode，开始每天都做几题，做了七八题之后，决定开始写这篇笔记记录一下所思所想。**
+>**25年10月，学成 Java Web 归来并且做过[单体项目](https://github.com/ZH0531/Z-Chat-Public)但是投简历仍然石沉大海的我，决定刷刷算法充实一下自己...
+><br>于是打开了 LeetCode，开始每天都做几题，做了七八题之后，决定开始写这篇笔记来记录一下所思所想。**
 
 **题目描述：**  
 给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出和为目标值 `target` 的那两个整数，并返回它们的数组下标。
