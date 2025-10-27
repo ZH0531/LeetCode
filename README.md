@@ -411,10 +411,7 @@ public List<List<Integer>> threeSum(int[] nums) {
 >
 > 这里就不得不提三指针的巧妙之处了！关键在于**去重的时机**：
 >
-> ```java
-  if (i > 0 && nums[i] == nums[i - 1]) continue;
-> ```
-> 
+> ` if (i > 0 && nums[i] == nums[i - 1]) continue; `
 >
 > 我们是**处理完当前重复数字之后，检测到下一个还是重复的才跳过**。举个例子：
 >
