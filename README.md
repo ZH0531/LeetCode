@@ -323,8 +323,7 @@ public int maxArea(int[] height) {
 ### [Problem 15 - 三数之和](src/LeetCode/HOT100/Problem15.java)
 
 **题目描述：**  
-给你一个整数数组 `nums`，判断是否存在三元组 `[nums[i], nums[j], nums[k]]` 满足 `i != j`、`i != k` 且 `j != k`，同时还满足
-`nums[i] + nums[j] + nums[k] == 0`。
+给你一个整数数组 `nums`，判断是否存在三元组 `[nums[i], nums[j], nums[k]]` 满足 `i != j`、`i != k` 且 `j != k`，同时还满足 `nums[i] + nums[j] + nums[k] == 0`。
 
 **题解：**
 
@@ -423,7 +422,7 @@ public List<List<Integer>> threeSum(int[] nums) {
 >             ↑
 >            i=1，第二次遇到 -1，发现和前一个一样，跳过！最后结果只有一个！
 >            没有重复！由于 left = i + 1，所以也不会对前面固定指针已经遍历过的数字重复计算
->  ```
+> ```
 > 
 > 如果反过来，写成 `if (i < n-1 && nums[i] == nums[i + 1]) continue;`（检测到和后面一样就跳过），那就会出问题：
 >
