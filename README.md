@@ -414,6 +414,7 @@ public List<List<Integer>> threeSum(int[] nums) {
 > ```java
   if (i > 0 && nums[i] == nums[i - 1]) continue;
 > ```
+> 
 >
 > 我们是**处理完当前重复数字之后，检测到下一个还是重复的才跳过**。举个例子：
 >
@@ -425,8 +426,8 @@ public List<List<Integer>> threeSum(int[] nums) {
 >             ↑
 >            i=1，第二次遇到 -1，发现和前一个一样，跳过！最后结果只有一个！
 >            没有重复！由于 left = i + 1，所以也不会对前面固定指针已经遍历过的数字重复计算
-> ```
->
+>  ```
+> 
 > 如果反过来，写成 `if (i < n-1 && nums[i] == nums[i + 1]) continue;`（检测到和后面一样就跳过），那就会出问题：
 >
 > ```
